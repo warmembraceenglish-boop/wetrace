@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">WETrace app icon</title>
+  <desc id="desc">A global investigation lens with connected evidence nodes on a midnight navy field.</desc>
+  <defs>
+    <radialGradient id="bg" cx="35%" cy="28%" r="90%">
+      <stop offset="0%" stop-color="#0D3554"/>
+      <stop offset="55%" stop-color="#071B2F"/>
+      <stop offset="100%" stop-color="#04111F"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE39A"/>
+      <stop offset="45%" stop-color="#E9A23B"/>
+      <stop offset="100%" stop-color="#9B6219"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8CE8FF"/>
+      <stop offset="100%" stop-color="#29C3E8"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="210" fill="url(#bg)"/>
+  <g opacity=".18" stroke="#29C3E8" stroke-width="4">
+    <path d="M90 270 C240 170 315 210 430 150 S710 90 925 210"/>
+    <path d="M110 755 C230 630 390 690 505 580 S730 515 930 650"/>
+    <path d="M175 115 L335 310 L585 205 L820 330"/>
+    <path d="M130 520 L340 430 L610 500 L875 425"/>
+  </g>
+  <g fill="#29C3E8" opacity=".7" filter="url(#glow)">
+    <circle cx="175" cy="115" r="10"/><circle cx="335" cy="310" r="10"/><circle cx="585" cy="205" r="10"/>
+    <circle cx="820" cy="330" r="10"/><circle cx="130" cy="520" r="10"/><circle cx="875" cy="425" r="10"/>
+  </g>
+  <g transform="translate(92 70)">
+    <circle cx="415" cy="400" r="270" fill="#061725" stroke="url(#gold)" stroke-width="36"/>
+    <circle cx="415" cy="400" r="233" fill="#0A2A44" stroke="url(#cyan)" stroke-width="8" opacity=".98"/>
+    <g fill="none" stroke="#4FD0ED" opacity=".55" stroke-width="7">
+      <ellipse cx="415" cy="400" rx="205" ry="86"/>
+      <ellipse cx="415" cy="400" rx="90" ry="205"/>
+      <path d="M210 400 H620"/>
+      <path d="M415 195 V605"/>
+    </g>
+    <g fill="#29C3E8" filter="url(#glow)">
+      <circle cx="322" cy="331" r="15"/>
+      <circle cx="468" cy="292" r="13"/>
+      <circle cx="528" cy="428" r="16"/>
+      <circle cx="356" cy="489" r="12"/>
+    </g>
+    <g fill="none" stroke="#E9A23B" stroke-width="8" opacity=".9">
+      <path d="M322 331 L468 292 L528 428 L356 489 L322 331"/>
+    </g>
+    <path d="M582 590 L785 793" stroke="#05111E" stroke-width="100" stroke-linecap="round"/>
+    <path d="M582 590 L785 793" stroke="url(#gold)" stroke-width="74" stroke-linecap="round"/>
+    <path d="M615 623 L758 766" stroke="#FFE2A0" stroke-width="10" stroke-linecap="round" opacity=".58"/>
+  </g>
+  <g transform="translate(118 805)">
+    <text x="0" y="90" font-family="Arial,Helvetica,sans-serif" font-size="92" font-weight="900" letter-spacing="-4" fill="#FFFFFF">WE</text>
+    <text x="158" y="90" font-family="Arial,Helvetica,sans-serif" font-size="92" font-weight="900" letter-spacing="-4" fill="url(#gold)">TRACE</text>
+  </g>
+</svg>
