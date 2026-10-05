@@ -62,19 +62,16 @@ export default function Dashboard(){
        supabase
          .from("cases")
          .select("id,case_number,title,case_type,jurisdictions,priority,status,updated_at,client_reference")
-         .order("updated_at",{ascending:false})
-         .limit(6),
+         .order("updated_at",{ascending:false}),
        supabase
          .from("leads")
          .select("id,case_id,title,confidence,status,description")
          .in("status",["new","review","verified"])
-         .order("confidence",{ascending:false})
-         .limit(10),
+         .order("confidence",{ascending:false}),
        supabase
          .from("evidence")
          .select("id,case_id,evidence_number,evidence_type,description,custody_status,sensitivity,created_at")
-         .order("created_at",{ascending:false})
-         .limit(5),
+         .order("created_at",{ascending:false}),
        supabase
          .from("investigator_profiles")
          .select("user_id,availability,specialties")
@@ -117,7 +114,7 @@ export default function Dashboard(){
      {cases.length
        ?<div className="tableWrap"><table>
          <thead><tr><th>Case</th><th>Type</th><th>Jurisdiction</th><th>Priority</th><th>Status</th><th>Updated</th></tr></thead>
-         <tbody>{cases.map(c=><tr key={c.id}>
+         <tbody>{cases.slice(0,6).map(c=><tr key={c.id}>
            <td><Link href={"/cases/"+c.id} className="caseLink"><span className="caseId">{c.case_number}</span><strong>{c.title}</strong></Link></td>
            <td>{c.case_type}</td>
            <td>{c.jurisdictions?.join(" / ")||"—"}</td>
@@ -151,7 +148,7 @@ export default function Dashboard(){
     <section className="panel">
       <div className="panelHead"><div><h2>Evidence requiring action</h2><p>Live evidence records and custody state.</p></div><Link className="textBtn" href="/evidence">Evidence vault →</Link></div>
       {evidence.length
-        ?<div className="evidenceList">{evidence.map(e=><Link className="evidenceRow evidenceLink" key={e.id} href={"/evidence/"+e.id}>
+        ?<div className="evidenceList">{evidence.slice(0,5).map(e=><Link className="evidenceRow evidenceLink" key={e.id} href={"/evidence/"+e.id}>
           <span className="fileIcon">{e.evidence_type.slice(0,3).toUpperCase()}</span>
           <div><strong>{e.evidence_number} · {e.description||e.evidence_type}</strong><small>{new Date(e.created_at).toLocaleString()}</small></div>
           <Badge tone={e.sensitivity==="biometric"||e.sensitivity==="genetic"?"red":e.custody_status==="sealed"?"green":"amber"}>{e.custody_status}</Badge>
