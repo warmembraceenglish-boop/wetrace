@@ -1,34 +1,101 @@
 "use client";
+
+import Link from "next/link";
 import {useEffect,useState} from "react";
 import AppShell from "../components/AppShell";
 import Badge from "../components/Badge";
 import {useWorkspace} from "../lib/useWorkspace";
 
-export default function Admin(){
- const {supabase,organization,profile,membership}=useWorkspace();
+const roles=["admin","lead_investigator","investigator","researcher","forensic_examiner","billing","client"];
+
+export default function Administration(){
+ const {supabase,organization,membership}=useWorkspace();
  const [members,setMembers]=useState<any[]>([]);
  const [profiles,setProfiles]=useState<Record<string,any>>({});
- const canManage=["owner","admin"].includes(membership?.organization_role||"")||profile?.global_role==="platform_admin";
+ const [error,setError]=useState<string|null>(null);
+ const canManage=["owner","admin"].includes(membership?.organization_role||"");
 
  const load=async()=>{
-  if(!organization)return;
-  const {data:m}=await supabase.from("organization_members").select("*").eq("organization_id",organization.id).order("joined_at",{ascending:true});
-  const ids=(m||[]).map((x:any)=>x.user_id);
-  if(ids.length){
-   const {data:p}=await supabase.from("profiles").select("id,display_name,email,global_role").in("id",ids);
-   setProfiles(Object.fromEntries((p||[]).map((x:any)=>[x.id,x])));
-  }
-  setMembers(m||[]);
+   if(!organization)return;
+
+   const {data:m}=await supabase
+     .from("organization_members")
+     .select("user_id,organization_role,status,joined_at")
+     .eq("organization_id",organization.id)
+     .order("joined_at",{ascending:true});
+
+   const ids=(m||[]).map((x:any)=>x.user_id);
+   let map:Record<string,any>={};
+
+   if(ids.length){
+     const {data:p}=await supabase.from("profiles").select("id,display_name,email").in("id",ids);
+     map=Object.fromEntries((p||[]).map((x:any)=>[x.id,x]));
+   }
+
+   setProfiles(map);
+   setMembers(m||[]);
  };
- useEffect(()=>{load()},[organization?.id]);
 
- const setRole=async(id:string,role:string)=>{if(!organization||!canManage)return;await supabase.from("organization_members").update({organization_role:role}).eq("organization_id",organization.id).eq("user_id",id);load()};
+ useEffect(()=>{load();},[organization?.id]);
 
- return <AppShell title="Administration" subtitle="Organization, team roles and security posture.">
-  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
-   <section className="panel"><h2>Organization</h2><p>{organization?.name}</p><table className="table"><tbody><tr><td>Country</td><td>{organization?.country_code||"—"}</td></tr><tr><td>Language</td><td>{organization?.preferred_language||"en"}</td></tr><tr><td>Currency</td><td>{organization?.default_currency||"USD"}</td></tr></tbody></table></section>
-   <section className="panel"><h2>Security posture</h2><table className="table"><tbody><tr><td>Row Level Security</td><td><Badge tone="green">ENFORCED</Badge></td></tr><tr><td>Evidence storage</td><td><Badge tone="green">PRIVATE</Badge></td></tr><tr><td>Super Admin</td><td><Badge tone="green">{profile?.global_role==="platform_admin"?"ACTIVE":"ROLE-GATED"}</Badge></td></tr></tbody></table></section>
-  </div>
-  <section className="panel"><h2>Team & roles</h2>{members.length?<table className="table"><thead><tr><th>Name</th><th>Email</th><th>Platform role</th><th>Organization role</th><th>Status</th></tr></thead><tbody>{members.map(m=>{const p=profiles[m.user_id];return <tr key={m.user_id}><td>{p?.display_name||"Team member"}</td><td>{p?.email||"—"}</td><td>{p?.global_role==="platform_admin"?"Super Admin":p?.global_role||"—"}</td><td>{canManage&&m.organization_role!=="owner"?<select value={m.organization_role} onChange={e=>setRole(m.user_id,e.target.value)}><option>admin</option><option>lead_investigator</option><option>investigator</option><option>researcher</option><option>forensic_examiner</option><option>billing</option><option>client</option></select>:m.organization_role}</td><td><Badge tone={m.status==="active"?"green":"amber"}>{m.status}</Badge></td></tr>})}</tbody></table>:<div className="empty">No team members.</div>}</section>
+ const setRole=async(userId:string,role:string)=>{
+   if(!organization||!canManage)return;
+   setError(null);
+
+   const {error}=await supabase
+     .from("organization_members")
+     .update({organization_role:role})
+     .eq("organization_id",organization.id)
+     .eq("user_id",userId);
+
+   if(error)setError(error.message);
+   else load();
+ };
+
+ return <AppShell
+   title="Administration"
+   subtitle="Organization, team roles, security posture and live access controls."
+   actions={canManage?<div className="caseHeaderActions"><Link href="/investigators" className="primaryBtn inlineBtn">＋ Invite team member</Link><Link href="/service-requests" className="secondaryBtn inlineBtn">Service requests</Link></div>:undefined}
+ >
+   {error&&<div className="inlineAlert error">{error}</div>}
+
+   <div className="caseWorkspaceGrid">
+     <section className="panel">
+       <div className="panelHead"><div><h2>Organization</h2><p>Live workspace configuration.</p></div><Badge tone="green">SECURED</Badge></div>
+       <div className="profileDetail"><small>Name</small><strong>{organization?.name}</strong></div>
+       <div className="profileDetail"><small>Country</small><strong>{organization?.country_code||"—"}</strong></div>
+       <div className="profileDetail"><small>Language</small><strong>{organization?.preferred_language||"en"}</strong></div>
+       <div className="profileDetail"><small>Default currency</small><strong>{organization?.default_currency||"USD"}</strong></div>
+     </section>
+
+     <section className="panel">
+       <div className="panelHead"><div><h2>Security posture</h2><p>Backend controls currently enforced.</p></div></div>
+       <div className="gateLine"><span>Row Level Security</span><Badge tone="green">ENFORCED</Badge></div>
+       <div className="gateLine"><span>Anonymous data access</span><Badge tone="green">Revoked</Badge></div>
+       <div className="gateLine"><span>Evidence storage</span><Badge tone="green">Private</Badge></div>
+       <div className="gateLine"><span>Credential storage</span><Badge tone="green">Private</Badge></div>
+       <div className="gateLine"><span>Audit log</span><Badge tone="green">Append-only</Badge></div>
+     </section>
+   </div>
+
+   <section className="panel">
+     <div className="panelHead"><div><h2>Team & roles</h2><p>{members.length} member{members.length===1?"":"s"} in this organization.</p></div></div>
+
+     {members.length?<div className="tableWrap"><table>
+       <thead><tr><th>Member</th><th>Email</th><th>Status</th><th>Role</th><th>Joined</th></tr></thead>
+       <tbody>{members.map(m=>{
+         const p=profiles[m.user_id];
+         return <tr key={m.user_id}>
+           <td><Link className="caseLink" href={"/investigators/"+m.user_id}><strong>{p?.display_name||"Team member"}</strong></Link></td>
+           <td>{p?.email||"—"}</td>
+           <td><Badge tone={m.status==="active"?"green":"amber"}>{m.status}</Badge></td>
+           <td>{canManage&&m.organization_role!=="owner"
+             ?<select className="compactSelect" value={m.organization_role} onChange={e=>setRole(m.user_id,e.target.value)}>{roles.map(r=><option key={r} value={r}>{r.replaceAll("_"," ")}</option>)}</select>
+             :m.organization_role.replaceAll("_"," ")}</td>
+           <td className="muted">{new Date(m.joined_at).toLocaleDateString()}</td>
+         </tr>;
+       })}</tbody>
+     </table></div>:<div className="emptyState compact"><strong>No team members yet</strong></div>}
+   </section>
  </AppShell>;
 }
