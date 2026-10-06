@@ -17,7 +17,7 @@
     "appId": "com.oppaproductions.wetrace",
     "productName": "WETrace",
     "asar": true,
-    "compression": "maximum",
+    "compression": "normal",
     "directories": {
       "output": "../dist-desktop"
     },
@@ -31,12 +31,6 @@
       "target": [
         {
           "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        },
-        {
-          "target": "zip",
           "arch": [
             "x64"
           ]
