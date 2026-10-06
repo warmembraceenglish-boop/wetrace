@@ -47,6 +47,15 @@ export default function SourceRecordPage(){
         <div className="profileDetail"><small>Retrieved</small><strong>{new Date(row.retrieved_at).toLocaleString()}</strong></div>
         <div className="profileDetail"><small>Source URL</small><strong className="hashText">{row.source_url||"—"}</strong></div>
 
+        {row.source_url&&(/\.(pdf|jpg|jpeg|png|webp)(\?|$)/i.test(row.source_url))&&<div className="formNotice">
+          <strong>In-platform source viewer</strong>
+          <div className="viewerStage" style={{marginTop:12,minHeight:420}}>
+            {/\.(jpg|jpeg|png|webp)(\?|$)/i.test(row.source_url)
+              ?<img src={"/api/source-file?url="+encodeURIComponent(row.source_url)} alt={row.source_title}/>
+              :<iframe src={"/api/source-file?url="+encodeURIComponent(row.source_url)} title={row.source_title}/>}
+          </div>
+        </div>}
+
         <div className="formNotice">
           <strong>Factual summary</strong>
           <p>{row.factual_summary||"No factual summary entered."}</p>
@@ -54,7 +63,7 @@ export default function SourceRecordPage(){
 
         {row.source_url&&<div className="formNotice">
           <strong>External source access</strong>
-          <p>WETrace keeps the source record, provenance and notes here. Some official websites block in-app embedding, so the URL is preserved even when the external page cannot be displayed inside WETrace.</p>
+          <p>WETrace keeps the source record, provenance and notes here. PDFs and images from supported official agencies are displayed above inside WETrace. The original URL is preserved as provenance and as a backup.</p>
         </div>}
       </section>
 
