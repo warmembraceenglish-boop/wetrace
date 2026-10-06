@@ -1,4 +1,5 @@
 import {NextRequest,NextResponse} from "next/server";
+import storedPhotos from "../../lib/official-photo-assets.json";
 
 const ALLOWED_HOSTS=new Set([
   "www.mshp.dps.missouri.gov",
@@ -33,6 +34,10 @@ async function fetchAllowed(url:URL,depth=0):Promise<Response>{
 export async function GET(req:NextRequest){
   const raw=req.nextUrl.searchParams.get("url");
   if(!raw)return NextResponse.json({error:"Missing url"},{status:400});
+
+  const assets:Record<string,string> = storedPhotos;
+  const stored=assets[raw]||assets[raw.replace(/@@/g,"%40%40")];
+  if(stored)return NextResponse.redirect(new URL(stored,req.url),307);
 
   let url:URL;
   try{url=new URL(raw);}catch{return NextResponse.json({error:"Invalid url"},{status:400});}

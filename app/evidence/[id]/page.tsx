@@ -5,6 +5,8 @@ import {useParams} from "next/navigation";
 import {useEffect,useState} from "react";
 import AppShell from "../../components/AppShell";
 import Badge from "../../components/Badge";
+import CasePhoto from "../../components/CasePhoto";
+import storedPhotos from "../../lib/official-photo-assets.json";
 import {useWorkspace} from "../../lib/useWorkspace";
 
 type Evidence={
@@ -50,7 +52,7 @@ export default function EvidenceViewer(){
    if(!id)return;
 
    (async()=>{
-     setLoading(true);
+     setLoading(true);setError(null);setUrl(null);setKind("other");
 
      const {data:e,error:eErr}=await supabase
        .from("evidence")
@@ -75,7 +77,7 @@ export default function EvidenceViewer(){
      setCustody((c as Custody[])||[]);
 
      const detectKind=(name:string)=>{
-       const ext=name.split(".").pop()?.toLowerCase()||"";
+       const ext=name.split(/[?#]/)[0].split(".").pop()?.toLowerCase()||"";
        if(["jpg","jpeg","png","gif","webp"].includes(ext))return "image" as const;
        if(ext==="pdf")return "pdf" as const;
        if(["mp4","webm","mov"].includes(ext))return "video" as const;
@@ -83,6 +85,14 @@ export default function EvidenceViewer(){
        return "other" as const;
      };
 
+     const assets:Record<string,string> = storedPhotos;
+     const stored=e.source_url?(assets[e.source_url]||assets[e.source_url.replace(/@@/g,"%40%40")]):null;
+     const fileKind = e.mime_type?.startsWith("image/") || e.evidence_type==="image" || stored ? "image" :
+       e.mime_type==="application/pdf" ? "pdf" :
+       e.mime_type?.startsWith("video/") ? "video" :
+       e.mime_type?.startsWith("audio/") ? "audio" :
+       detectKind(e.original_file_name||e.storage_path||e.source_url||"");
+     setKind(fileKind);
      if(e.storage_path){
        const {data:signed,error:sErr}=await supabase.storage
          .from("wetrace-evidence")
@@ -92,11 +102,10 @@ export default function EvidenceViewer(){
          setError(sErr.message);
        }else if(signed?.signedUrl){
          setUrl(signed.signedUrl);
-         setKind(detectKind(e.storage_path));
+
        }
      }else if(e.source_url){
-       setUrl("/api/source-file?url="+encodeURIComponent(e.source_url));
-       setKind(detectKind(e.original_file_name||e.source_url));
+       setUrl(stored||(fileKind==="image"?"/api/source-image?url=":"/api/source-file?url=")+encodeURIComponent(e.source_url));
      }
 
      setLoading(false);
@@ -125,7 +134,7 @@ export default function EvidenceViewer(){
              <div className="viewerStage">
                {url
                  ?kind==="image"
-                   ?<img src={url} alt={item.description||item.evidence_number}/>
+                   ?<CasePhoto src={url} alt={item.description||item.evidence_number} style={{maxWidth:"100%",maxHeight:"75vh",objectFit:"contain"}}/>
                    :kind==="video"
                      ?<video src={url} controls playsInline/>
                      :kind==="audio"
