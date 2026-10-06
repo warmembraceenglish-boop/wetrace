@@ -14,9 +14,9 @@ permissions:
 
 jobs:
   windows:
-    name: Windows installer and portable ZIP
+    name: Windows installer
     runs-on: windows-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -36,7 +36,7 @@ jobs:
         working-directory: desktop
         run: npm install --no-audit --no-fund
 
-      - name: Build Windows desktop app
+      - name: Build Windows installer
         shell: pwsh
         working-directory: desktop
         env:
@@ -51,9 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: WETrace-Desktop-1.0.0-Windows
-          path: |
-            dist-desktop/*.exe
-            dist-desktop/*.zip
+          path: dist-desktop/*.exe
           if-no-files-found: error
           retention-days: 30
 
@@ -64,10 +62,9 @@ jobs:
         run: |
           $tag = "wetrace-desktop-v1.0.0"
           $exe = Get-ChildItem dist-desktop -Filter "*.exe" | Select-Object -First 1
-          $zip = Get-ChildItem dist-desktop -Filter "*.zip" | Select-Object -First 1
           gh release view $tag --repo "${{ github.repository }}" 2>$null
           if ($LASTEXITCODE -ne 0) {
-            gh release create $tag $exe.FullName $zip.FullName --repo "${{ github.repository }}" --target "${{ github.sha }}" --title "WETrace Desktop 1.0.0" --notes "WETrace Desktop for Windows. Includes the Windows installer and portable ZIP build. The desktop app connects securely to the live WETrace platform."
+            gh release create $tag $exe.FullName --repo "${{ github.repository }}" --target "${{ github.sha }}" --title "WETrace Desktop 1.0.0" --notes "WETrace Desktop for Windows. Install the EXE to launch the live secure WETrace platform from your desktop."
           } else {
-            gh release upload $tag $exe.FullName $zip.FullName --repo "${{ github.repository }}" --clobber
+            gh release upload $tag $exe.FullName --repo "${{ github.repository }}" --clobber
           }
