@@ -66,7 +66,7 @@ export default function MissingPersons(){
 
    const [r,c]=await Promise.all([
      supabase.from("missing_person_records").select("*").eq("organization_id",organization.id).order("updated_at",{ascending:false}),
-     supabase.from("cases").select("id,case_number,title,jurisdictions").eq("case_type","Missing Person").order("updated_at",{ascending:false})
+     supabase.from("cases").select("id,case_number,title,jurisdictions").ilike("case_type","%Missing Person%").order("updated_at",{ascending:false})
    ]);
 
    if(r.error)setError(r.error.message);
@@ -92,11 +92,14 @@ export default function MissingPersons(){
 
    const urls:Record<string,string>={};
    if(evidenceIds.length){
-     const {data:e}=await supabase.from("evidence").select("id,storage_path").in("id",evidenceIds);
+     const {data:e}=await supabase.from("evidence").select("id,storage_path,source_url").in("id",evidenceIds);
      for(const item of e||[]){
-       if(!item.storage_path)continue;
-       const {data:signed}=await supabase.storage.from("wetrace-evidence").createSignedUrl(item.storage_path,900);
-       if(signed?.signedUrl)urls[item.id]=signed.signedUrl;
+       if(item.storage_path){
+         const {data:signed}=await supabase.storage.from("wetrace-evidence").createSignedUrl(item.storage_path,900);
+         if(signed?.signedUrl)urls[item.id]=signed.signedUrl;
+       }else if(item.source_url){
+         urls[item.id]=item.source_url;
+       }
      }
    }
    setPhotoUrls(urls);
