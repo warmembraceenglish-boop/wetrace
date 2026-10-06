@@ -54,7 +54,7 @@ export default function MissingPersonDetail(){
          const {data:signed}=await supabase.storage.from("wetrace-evidence").createSignedUrl(ev.storage_path,900);
          if(signed?.signedUrl)urls[row.id]=signed.signedUrl;
        }else if(ev.source_url){
-         urls[row.id]=ev.source_url;
+         urls[row.id]="/api/source-image?url="+encodeURIComponent(ev.source_url);
        }
      }
    }
