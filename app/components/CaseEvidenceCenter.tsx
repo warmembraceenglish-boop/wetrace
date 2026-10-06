@@ -305,7 +305,7 @@ export default function CaseEvidenceCenter({
 
      {media.length?<div className="mediaGallery">{media.map(row=>{
        const kind=mediaKind(row);
-       const src=urls[row.id];
+       const src=urls[row.id]||(kind==="image"&&row.source_url?row.source_url:undefined);
 
        return <article className={row.is_case_cover?"mediaCard coverMedia":"mediaCard"} key={row.id}>
          <div className="mediaStage">
