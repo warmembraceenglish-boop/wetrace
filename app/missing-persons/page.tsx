@@ -98,7 +98,7 @@ export default function MissingPersons(){
          const {data:signed}=await supabase.storage.from("wetrace-evidence").createSignedUrl(item.storage_path,900);
          if(signed?.signedUrl)urls[item.id]=signed.signedUrl;
        }else if(item.source_url){
-         urls[item.id]=item.source_url;
+         urls[item.id]="/api/source-image?url="+encodeURIComponent(item.source_url);
        }
      }
    }
