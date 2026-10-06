@@ -95,7 +95,7 @@ export default function EvidenceViewer(){
          setKind(detectKind(e.storage_path));
        }
      }else if(e.source_url){
-       setUrl(e.source_url);
+       setUrl("/api/source-file?url="+encodeURIComponent(e.source_url));
        setKind(detectKind(e.original_file_name||e.source_url));
      }
 
@@ -139,7 +139,7 @@ export default function EvidenceViewer(){
              <h2>Evidence details</h2>
              <div className="profileDetail"><small>Type</small><strong>{item.evidence_type}</strong></div>
              <div className="profileDetail"><small>Collected</small><strong>{item.collected_at?new Date(item.collected_at).toLocaleString():"—"}</strong></div>
-             <div className="profileDetail"><small>Source agency</small><strong>{item.source_agency||"—"}</strong></div><div className="profileDetail"><small>Source reference</small><strong>{item.source_reference||"—"}</strong></div><div className="profileDetail"><small>SHA-256</small><strong className="hashText">{item.sha256||"—"}</strong></div>{item.source_url&&<a href={item.source_url} target="_blank" rel="noreferrer" className="secondaryBtn inlineBtn fullBtn">Open official source</a>}
+             <div className="profileDetail"><small>Source agency</small><strong>{item.source_agency||"—"}</strong></div><div className="profileDetail"><small>Source reference</small><strong>{item.source_reference||"—"}</strong></div><div className="profileDetail"><small>SHA-256</small><strong className="hashText">{item.sha256||"—"}</strong></div>{item.source_url&&<a href={item.source_url} target="_blank" rel="noreferrer" className="secondaryBtn inlineBtn fullBtn">Official source backup</a>}
              <div className="profileDetail"><small>Sensitivity</small><strong>{item.sensitivity}</strong></div>
              <Link href={"/cases/"+item.case_id+"?view=evidence"} className="secondaryBtn inlineBtn fullBtn">Return to case</Link>
            </aside>
