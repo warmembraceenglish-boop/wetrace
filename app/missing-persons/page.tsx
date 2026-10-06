@@ -23,7 +23,7 @@ type MissingRecord={
   primary_photo_evidence_id:string|null;
 };
 
-type CaseRow={id:string;case_number:string;title:string;jurisdictions:string[]};
+type CaseRow={id:string;case_number:string;title:string;jurisdictions:string[];case_file_status:string;incident_date:string|null;source_agency:string|null;last_verified_at:string|null};
 
 function safeName(name:string){return name.replace(/[^a-zA-Z0-9._-]+/g,"_").slice(-120);}
 async function sha256(file:File){
@@ -66,7 +66,7 @@ export default function MissingPersons(){
 
    const [r,c]=await Promise.all([
      supabase.from("missing_person_records").select("*").eq("organization_id",organization.id).order("updated_at",{ascending:false}),
-     supabase.from("cases").select("id,case_number,title,jurisdictions").ilike("case_type","%Missing Person%").order("updated_at",{ascending:false})
+     supabase.from("cases").select("id,case_number,title,jurisdictions,case_file_status,incident_date,source_agency,last_verified_at").ilike("case_type","%Missing Person%").order("updated_at",{ascending:false})
    ]);
 
    if(r.error)setError(r.error.message);
@@ -81,12 +81,12 @@ export default function MissingPersons(){
    const evidenceIds=[...new Set(rows.map(x=>x.primary_photo_evidence_id).filter(Boolean))] as string[];
 
    if(personIds.length){
-     const {data:p}=await supabase.from("people").select("id,display_name,aliases,nationality,sensitivity").in("id",personIds);
+     const {data:p}=await supabase.from("people").select("id,display_name,aliases,date_of_birth,nationality,sensitivity").in("id",personIds);
      setPeople(Object.fromEntries((p||[]).map((x:any)=>[x.id,x])));
    }else setPeople({});
 
    if(caseIds.length){
-     const {data:cc}=await supabase.from("cases").select("id,case_number,title,jurisdictions").in("id",caseIds);
+     const {data:cc}=await supabase.from("cases").select("id,case_number,title,jurisdictions,case_file_status,incident_date,source_agency,last_verified_at").in("id",caseIds);
      setCaseMap(Object.fromEntries((cc||[]).map((x:any)=>[x.id,x])));
    }else setCaseMap({});
 
@@ -227,25 +227,44 @@ export default function MissingPersons(){
    {notice&&<div className="inlineAlert success">{notice}</div>}
 
    <section className="panel">
-     <div className="panelHead"><div><h2>Missing-person registry</h2><p>{loading?"Loading secure records…":records.length+" real record"+(records.length===1?"":"s")+" in your workspace"}</p></div></div>
+     <div className="panelHead"><div><h2>Missing-person file room</h2><p>{loading?"Loading secure records…":records.length+" missing-person file"+(records.length===1?"":"s")+" on file"}</p></div></div>
 
      {records.length
-       ?<div className="missingPersonGrid">
+       ?<div className="recordGrid">
          {records.map(r=>{
            const person=people[r.person_id];
            const c=caseMap[r.case_id];
            const photoUrl=r.primary_photo_evidence_id?photoUrls[r.primary_photo_evidence_id]:null;
-           return <Link href={"/missing-persons/"+r.id} className="missingPersonCard" key={r.id}>
-             <div className="missingPhoto">{photoUrl?<img src={photoUrl} alt={person?.display_name||"Missing person"}/>:<span>NO PHOTO</span>}</div>
-             <div className="missingCardBody">
-               <div className="missingCardTop"><div><strong>{person?.display_name||"Missing person"}</strong><small>{c?.case_number||"Case"} · {c?.title||"Investigation"}</small></div><Badge tone={r.status==="located"?"green":r.status==="closed"?"slate":"red"}>{r.status}</Badge></div>
-               <div className="missingFacts"><span><small>Last seen</small><b>{r.last_seen_at?new Date(r.last_seen_at).toLocaleString():"Unknown"}</b></span><span><small>Location</small><b>{r.last_seen_location||"Unknown"}</b></span></div>
-               <p>{r.last_seen_details||r.physical_description||"No additional summary entered."}</p>
+           return <Link href={"/missing-persons/"+r.id} className="investigatorCard" key={r.id}>
+             <div className="investigatorHero">
+               <div className="largeAvatar" style={{overflow:"hidden",padding:0}}>
+                 {photoUrl?<img src={photoUrl} alt={person?.display_name||"Missing person"} style={{width:"100%",height:"100%",objectFit:"cover"}}/>:<span style={{fontSize:11}}>NO PHOTO</span>}
+               </div>
+               <div>
+                 <h2>{person?.display_name||"Missing person"}</h2>
+                 <p>{c?.case_number||"Case"} · {c?.title||"Investigation"}</p>
+                 <span>{c?.jurisdictions?.join(" / ")||r.last_seen_location||"Unknown location"}</span>
+               </div>
+               <Badge tone={r.status==="located"?"green":r.status==="closed"?"slate":"red"}>{r.status.toUpperCase()}</Badge>
              </div>
+
+             <div className="profileStats">
+               <div><small>Date of birth</small><strong>{person?.date_of_birth||"—"}</strong></div>
+               <div><small>Last seen</small><strong>{r.last_seen_at?new Date(r.last_seen_at).toLocaleDateString():"—"}</strong></div>
+               <div><small>Location</small><strong>{r.last_seen_location||"—"}</strong></div>
+             </div>
+
+             <div className="profileStats">
+               <div><small>Case class</small><strong>{c?.case_file_status==="cold_case"?"Cold Case":"Active / Open"}</strong></div>
+               <div><small>Agency</small><strong>{c?.source_agency||r.external_source_name||"—"}</strong></div>
+               <div><small>Police ref</small><strong>{r.police_report_reference||"—"}</strong></div>
+             </div>
+
+             <div className="credentialPreview"><span>⌖</span>{r.physical_description||r.last_seen_details||"Open the record for full details, images, sightings and sources."}</div>
            </Link>;
          })}
        </div>
-       :!loading&&<div className="emptyState"><strong>No missing-person records yet</strong><p>I have not inserted fake people. Create the first real record below or import an official/public source after verification.</p></div>}
+       :!loading&&<div className="emptyState"><strong>No missing-person records yet</strong><p>Add or import a verified missing-person record to populate this directory.</p></div>}
    </section>
 
    <section className="panel">
