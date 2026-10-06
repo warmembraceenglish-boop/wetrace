@@ -479,11 +479,44 @@ function SourcesView({rows,caseId,organizationId,onReload}:{rows:any[];caseId:st
 
 function MapView({rows}:{rows:any[]}){
  const located=rows.filter(x=>x.location_text);
+ const unique=located.filter((row:any,index:number,all:any[])=>all.findIndex(x=>x.location_text===row.location_text)===index);
+ const [active,setActive]=useState(0);
+ const point=unique[active]||unique[0];
+ const mapUrl=point?"https://www.google.com/maps?q="+encodeURIComponent(point.location_text)+"&output=embed":"";
+
  return <section className="panel">
-   <div className="panelHead"><div><h2>Location trail</h2><p>Locations recorded in case timeline events.</p></div></div>
-   {located.length
-     ?<div className="recordGrid">{located.map(e=><article className="recordCard" key={e.id}><div><strong>{e.location_text}</strong><small>{new Date(e.event_time).toLocaleString()} · {e.title}</small></div><Badge tone="blue">{e.confidence??"—"}%</Badge></article>)}</div>
-     :<Empty text="No mapped locations yet."/>}
+   <div className="panelHead"><div><h2>Case map</h2><p>Open case locations directly inside WETrace. Select a location below to move the map.</p></div><Badge tone="blue">{unique.length+" location"+(unique.length===1?"":"s")}</Badge></div>
+
+   {point?<>
+     <div className="formNotice">
+       <strong>Mapped location</strong>
+       <p>{point.location_text} · {point.title}</p>
+     </div>
+
+     <div style={{width:"100%",height:480,borderRadius:16,overflow:"hidden",border:"1px solid rgba(255,255,255,.12)",marginBottom:18}}>
+       <iframe
+         src={mapUrl}
+         title={"WETrace map — "+point.location_text}
+         width="100%"
+         height="100%"
+         style={{border:0}}
+         loading="lazy"
+         referrerPolicy="no-referrer-when-downgrade"
+       />
+     </div>
+
+     <div className="recordGrid">
+       {unique.map((e:any,i:number)=><button type="button" className="recordCard linkCard" key={e.id} onClick={()=>setActive(i)} style={{textAlign:"left",width:"100%"}}>
+         <div><strong>{e.location_text}</strong><small>{new Date(e.event_time).toLocaleString()} · {e.title}</small></div>
+         <Badge tone={i===active?"green":"blue"}>{i===active?"On map":(e.confidence??"—")+"%"}</Badge>
+       </button>)}
+     </div>
+
+     <div className="formNotice">
+       <strong>Location accuracy</strong>
+       <p>The map uses the location text recorded in the case timeline. It is a research aid, not proof of an exact event location. WETrace should preserve block-level or approximate locations when a precise modern private address is unnecessary.</p>
+     </div>
+   </>:<Empty text="No mapped locations yet."/>}
  </section>;
 }
 
