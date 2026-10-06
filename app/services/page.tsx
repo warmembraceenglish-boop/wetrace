@@ -5,7 +5,7 @@ const services = [
   {name:"Skip Trace",start:"$150",hourly:"$60/hr",desc:"Lawful location research using authorized records, public sources and documented investigative methods."},
   {name:"Insurance Fraud Investigation",start:"$750",hourly:"$85/hr",desc:"Claim review, timeline analysis, records organization, inconsistency review and evidence development."},
   {name:"Corporate Investigation",start:"$1,000",hourly:"$95/hr",desc:"Internal fact-finding, due diligence, misconduct review, asset and relationship research, and investigative reporting."},
-  {name:"Background Investigation",start:"$175",hourly:"$65/hr",desc:"Lawful background research, identity verification, public-record review and risk-focused reporting."},
+  {name:"Background Check / Investigation",start:"$175",hourly:"$65/hr",desc:"Lawful identity verification, public-record review, address and history research, sanctions/watchlist screening where permitted, and source-supported reporting."},
   {name:"Civil / Litigation Support",start:"$750",hourly:"$85/hr",desc:"Case research, witness and subject research, chronology building, evidence review and litigation-focused support."},
   {name:"Criminal Defense Support",start:"$750",hourly:"$85/hr",desc:"Defense-oriented investigative support, fact development, witness research, timeline review and evidence organization."},
   {name:"Genealogy / Heir Trace",start:"$350",hourly:"$70/hr",desc:"Family-line research, heir location, relationship mapping and source-supported genealogy research."},
