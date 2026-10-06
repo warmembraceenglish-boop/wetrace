@@ -1,6 +1,6 @@
 {
   "name": "wetrace",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "private": true,
   "main": "desktop/main.cjs",
   "scripts": {
@@ -10,7 +10,7 @@
     "lint": "next lint",
     "desktop": "electron desktop/main.cjs",
     "desktop:pack": "electron-builder --dir",
-    "desktop:build:win": "electron-builder --win"
+    "desktop:build:win": "electron-builder --win --x64"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.117.2",
@@ -37,10 +37,11 @@
     },
     "files": [
       "desktop/**/*",
+      "public/wetrace-icon-512.png",
       "package.json"
     ],
     "win": {
-      "icon": "desktop/assets/icon.png",
+      "icon": "public/wetrace-icon-512.png",
       "target": [
         {
           "target": "nsis",
@@ -54,7 +55,8 @@
             "x64"
           ]
         }
-      ]
+      ],
+      "artifactName": "WETrace-Windows-${version}-${arch}.${ext}"
     },
     "nsis": {
       "oneClick": false,
