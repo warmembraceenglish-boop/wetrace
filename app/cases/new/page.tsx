@@ -8,7 +8,7 @@ import {useWorkspace} from "../../lib/useWorkspace";
 const types=[
   "Missing Person","Skip Trace","Insurance Fraud","Corporate Investigation",
   "Criminal Defense Support","Civil Litigation","Genealogy / Heir Trace",
-  "Forensics","Background Investigation","Other"
+  "Forensics","Background Check","Background Investigation","Other"
 ];
 
 type TeamMember={
@@ -35,6 +35,11 @@ export default function NewCase(){
  const [authorityNotes,setAuthorityNotes]=useState("");
  const [team,setTeam]=useState<TeamMember[]>([]);
  const [lead,setLead]=useState<string>("");
+
+ useEffect(()=>{
+   const requested=new URLSearchParams(window.location.search).get("type");
+   if(requested&&types.includes(requested))setCaseType(requested);
+ },[]);
 
  useEffect(()=>{
    if(!organization)return;
