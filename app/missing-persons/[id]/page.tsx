@@ -10,6 +10,8 @@ import {useWorkspace} from "../../lib/useWorkspace";
 export default function MissingPersonDetail(){
  const {id}=useParams<{id:string}>();
  const {supabase,user}=useWorkspace();
+ const [sourceData,setSourceData]=useState<any>(null);
+ const [poster,setPoster]=useState<string|null>(null);
  const [record,setRecord]=useState<any>(null);
  const [person,setPerson]=useState<any>(null);
  const [caseRow,setCaseRow]=useState<any>(null);
@@ -28,14 +30,17 @@ export default function MissingPersonDetail(){
    if(rErr||!r){setError(rErr?.message||"Missing-person record not found or access denied.");return;}
    setRecord(r);
 
-   const [p,c,mp,si]=await Promise.all([
+   const [p,c,mp,si,im]=await Promise.all([
      supabase.from("people").select("*").eq("id",r.person_id).maybeSingle(),
      supabase.from("cases").select("id,case_number,title,jurisdictions,status").eq("id",r.case_id).maybeSingle(),
      supabase.from("missing_person_photos").select("*").eq("missing_person_id",id).order("created_at",{ascending:true}),
-     supabase.from("missing_person_sightings").select("*").eq("missing_person_id",id).order("sighting_at",{ascending:false})
+     supabase.from("missing_person_sightings").select("*").eq("missing_person_id",id).order("sighting_at",{ascending:false}),
+     supabase.from("missing_person_imports").select("raw_public_data").eq("case_id",r.case_id).order("imported_at",{ascending:false})
    ]);
 
    setPerson(p.data||null);
+   setSourceData((im.data||[]).find((x:any)=>x.raw_public_data?.full_name===p.data?.display_name)?.raw_public_data||null);
+   if(im.error)setError(im.error.message);
    setCaseRow(c.data||null);
    const photoRows=mp.data||[];
    setPhotos(photoRows);
@@ -115,7 +120,7 @@ export default function MissingPersonDetail(){
        <aside className="panel evidenceMeta">
          <h2>Missing-person details</h2>
          <div className="profileDetail"><small>Status</small><strong>{record.status}</strong></div>
-         <div className="profileDetail"><small>Last seen</small><strong>{record.last_seen_at?new Date(record.last_seen_at).toLocaleString():"Unknown"}</strong></div>
+         <div className="profileDetail"><small>Last seen</small><strong>{sourceData?.date_missing|| (record.last_seen_at?new Date(record.last_seen_at).toLocaleString():"Not published")}</strong></div>
          <div className="profileDetail"><small>Location</small><strong>{record.last_seen_location||"Unknown"}</strong></div>
          <div className="profileDetail"><small>Police/report ref</small><strong>{record.police_report_reference||"—"}</strong></div>
          <div className="profileDetail"><small>Source</small><strong>{record.external_source_name||"Internal case record"}</strong></div>
@@ -137,6 +142,25 @@ export default function MissingPersonDetail(){
          <div><small>Medical / vulnerability notes</small><strong>{record.medical_or_vulnerability_notes||"—"}</strong></div>
        </div>
      </section>
+
+
+     {sourceData&&<section className="panel">
+       <h2>Official source dossier</h2>
+       <p>Source reviewed {sourceData.source_checked_on}. {sourceData.status_basis}</p>
+       <div className="detailColumns">
+         {[["Country",sourceData.country],["Sex",sourceData.sex],["Age at disappearance",sourceData.age_at_disappearance],["Age as reported",sourceData.age_as_reported],["Identifying marks",sourceData.identifying_marks],["Reward",sourceData.reward_information],["Agency",sourceData.police_agency],["Police reference",sourceData.case_report_number]].map(([label,value])=><div key={label}><small>{label}</small><strong>{value??"Not published in reviewed source"}</strong></div>)}
+       </div>
+       <h3>Timeline</h3>
+       <ul>{sourceData.timeline?.map((t:any,i:number)=><li key={i}><strong>{t.date||"Date not published"}</strong> — {t.event}</li>)}</ul>
+       {sourceData.notes?.length>0&&<><h3>Verification notes</h3><ul>{sourceData.notes.map((n:string,i:number)=><li key={i}>{n}</li>)}</ul></>}
+       <p>Missing fields: {sourceData.missing_fields?.join(", ")||"None recorded"}. Unknown does not mean none.</p>
+       <p><a href={sourceData.official_source_url} rel="noreferrer">Official source</a></p>
+       {sourceData.additional_sources?.map((url:string)=><p key={url}><a href={url} rel="noreferrer">Additional official update</a></p>)}
+       <h3>Official posters and bulletins</h3>
+       <p>Remote links only. Originals have not been downloaded or preserved in WETrace storage.</p>
+       {sourceData.posters?.length?sourceData.posters.map((a:any,i:number)=><button key={a.url} className="secondaryBtn inlineBtn" onClick={()=>setPoster(a.url)}>View official poster {i+1}</button>):<p>No separate poster verified; see the official appeal.</p>}
+       {poster&&<div><button className="textBtn" onClick={()=>setPoster(null)}>Close poster</button><iframe title="Official missing-person poster" src={"/api/source-file?url="+encodeURIComponent(poster)} style={{width:"100%",height:700,border:0}}/></div>}
+     </section>}
 
      <div className="caseWorkspaceGrid">
        <section className="panel">

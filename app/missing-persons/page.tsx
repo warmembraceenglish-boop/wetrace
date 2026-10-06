@@ -34,6 +34,11 @@ async function sha256(file:File){
 
 export default function MissingPersons(){
  const {supabase,user,organization}=useWorkspace();
+ const [sourceData,setSourceData]=useState<Record<string,any>>({});
+ const [category,setCategory]=useState("All");
+ const [country,setCountry]=useState("All");
+ const [ageGroup,setAgeGroup]=useState("All");
+ const [search,setSearch]=useState("");
  const [records,setRecords]=useState<MissingRecord[]>([]);
  const [cases,setCases]=useState<CaseRow[]>([]);
  const [people,setPeople]=useState<Record<string,any>>({});
@@ -64,12 +69,15 @@ export default function MissingPersons(){
    if(!organization)return;
    setLoading(true);setError(null);
 
-   const [r,c]=await Promise.all([
+   const [r,c,imports]=await Promise.all([
      supabase.from("missing_person_records").select("*").eq("organization_id",organization.id).order("updated_at",{ascending:false}),
-     supabase.from("cases").select("id,case_number,title,jurisdictions,case_file_status,incident_date,source_agency,last_verified_at").ilike("case_type","%Missing Person%").order("updated_at",{ascending:false})
+     supabase.from("cases").select("id,case_number,title,jurisdictions,case_file_status,incident_date,source_agency,last_verified_at").ilike("case_type","%Missing Person%").order("updated_at",{ascending:false}),
+     supabase.from("missing_person_imports").select("case_id,raw_public_data").eq("organization_id",organization.id)
    ]);
 
    if(r.error)setError(r.error.message);
+   if(imports.error)setError(imports.error.message);
+   setSourceData(Object.fromEntries((imports.data||[]).map((x:any)=>[x.case_id,x.raw_public_data])));
    if(c.error)setError(c.error.message);
 
    const rows=(r.data as MissingRecord[])||[];
@@ -218,6 +226,29 @@ export default function MissingPersons(){
    load();
  };
 
+
+ const recordDate=(r:MissingRecord)=>sourceData[r.case_id]?.date_missing||caseMap[r.case_id]?.incident_date||r.last_seen_at?.slice(0,10)||"";
+ const recordCountry=(r:MissingRecord)=>sourceData[r.case_id]?.country||caseMap[r.case_id]?.jurisdictions?.[0]||"Not published";
+ const group=(r:MissingRecord)=>{
+   if(r.status==="located")return "Located";
+   if(r.status==="closed")return "Closed";
+   if(caseMap[r.case_id]?.case_file_status==="cold_case")return "Cold Case";
+   const d=recordDate(r); const cutoff=new Date();cutoff.setUTCFullYear(cutoff.getUTCFullYear()-1);
+   return d&&d>=cutoff.toISOString().slice(0,10)&&d<=new Date().toISOString().slice(0,10)?"Recent":"Active/Open";
+ };
+ const age=(r:MissingRecord)=>{
+   const s=sourceData[r.case_id]; if(s?.age_at_disappearance!=null)return s.age_at_disappearance;
+   const dob=people[r.person_id]?.date_of_birth,d=recordDate(r);
+   if(!dob||!d)return null;
+   return Number(d.slice(0,4))-Number(dob.slice(0,4))-(d.slice(5)<dob.slice(5)?1:0);
+ };
+ const visible=records.filter(r=>(category==="All"||group(r)===category)&&(country==="All"||recordCountry(r)===country)&&(ageGroup==="All"||(ageGroup==="Unknown"?age(r)==null:age(r)!=null&&(ageGroup==="Child"?age(r)<18:age(r)>=18)))&&((people[r.person_id]?.display_name||"")+" "+(r.last_seen_location||"")).toLowerCase().includes(search.toLowerCase())).sort((a,b)=>(recordCountry(a)==="United States"?0:1)-(recordCountry(b)==="United States"?0:1)||recordCountry(a).localeCompare(recordCountry(b))||recordDate(b).localeCompare(recordDate(a)));
+ const exportRecords=()=>{
+   const data=visible.map(r=>sourceData[r.case_id]||{...r,person:people[r.person_id],case:caseMap[r.case_id],verification:"legacy_record_not_reverified_in_this_batch"});
+   const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));
+   const a=document.createElement("a");a.href=url;a.download="WETrace-missing-persons.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ };
+
  return <AppShell
    title="Missing Persons"
    subtitle="Real missing-person records, private photos, last-seen data, sightings and source provenance."
@@ -227,11 +258,21 @@ export default function MissingPersons(){
    {notice&&<div className="inlineAlert success">{notice}</div>}
 
    <section className="panel">
+     <div className="formGrid">
+       <label>Search name or location<input value={search} onChange={e=>setSearch(e.target.value)}/></label>
+       <label>Country<select value={country} onChange={e=>setCountry(e.target.value)}><option>All</option>{[...new Set(records.map(recordCountry))].sort().map(x=><option key={x}>{x}</option>)}</select></label>
+       <label>Directory section<select value={category} onChange={e=>setCategory(e.target.value)}>{["All","Recent","Active/Open","Cold Case","Located","Closed"].map(x=><option key={x}>{x}</option>)}</select></label>
+       <label>Age at disappearance<select value={ageGroup} onChange={e=>setAgeGroup(e.target.value)}>{["All","Child","Adult","Unknown"].map(x=><option key={x}>{x}</option>)}</select></label>
+     </div>
+     <p>Recent: missing within the last 12 months. Older active cases are not automatically classified as cold. Located people are excluded from open sections. Coverage is partial; check each record's source date.</p>
+     <button className="secondaryBtn inlineBtn" onClick={exportRecords}>Export displayed records (JSON)</button>
+   </section>
+   <section className="panel">
      <div className="panelHead"><div><h2>Missing-person file room</h2><p>{loading?"Loading secure records…":records.length+" missing-person file"+(records.length===1?"":"s")+" on file"}</p></div></div>
 
-     {records.length
+     {visible.length
        ?<div className="recordGrid">
-         {records.map(r=>{
+         {visible.map(r=>{
            const person=people[r.person_id];
            const c=caseMap[r.case_id];
            const photoUrl=r.primary_photo_evidence_id?photoUrls[r.primary_photo_evidence_id]:null;
@@ -250,12 +291,12 @@ export default function MissingPersons(){
 
              <div className="profileStats">
                <div><small>Date of birth</small><strong>{person?.date_of_birth||"—"}</strong></div>
-               <div><small>Last seen</small><strong>{r.last_seen_at?new Date(r.last_seen_at).toLocaleDateString():"—"}</strong></div>
+               <div><small>Last seen</small><strong>{recordDate(r)||"Not published"}</strong></div>
                <div><small>Location</small><strong>{r.last_seen_location||"—"}</strong></div>
              </div>
 
              <div className="profileStats">
-               <div><small>Case class</small><strong>{c?.case_file_status==="cold_case"?"Cold Case":"Active / Open"}</strong></div>
+               <div><small>Case class</small><strong>{group(r)}</strong></div>
                <div><small>Agency</small><strong>{c?.source_agency||r.external_source_name||"—"}</strong></div>
                <div><small>Police ref</small><strong>{r.police_report_reference||"—"}</strong></div>
              </div>
@@ -264,7 +305,7 @@ export default function MissingPersons(){
            </Link>;
          })}
        </div>
-       :!loading&&<div className="emptyState"><strong>No missing-person records yet</strong><p>Add or import a verified missing-person record to populate this directory.</p></div>}
+       :!loading&&<div className="emptyState"><strong>No matching missing-person records</strong><p>Add or import a verified missing-person record to populate this directory.</p></div>}
    </section>
 
    <section className="panel">

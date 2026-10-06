@@ -4,15 +4,17 @@ const ALLOWED_HOSTS=new Set([
   "www.mshp.dps.missouri.gov",
   "mshp.dps.missouri.gov",
   "www.fbi.gov",
-  "fbi.gov"
+  "fbi.gov",
+  "www.rcmp.ca", "rcmp.ca", "www.police.govt.nz", "www.scotland.police.uk"
 ]);
 
 async function fetchAllowed(url:URL,depth=0):Promise<Response>{
   if(depth>2)throw new Error("Too many redirects");
-  if(url.protocol!=="https:"||!ALLOWED_HOSTS.has(url.hostname))throw new Error("Source host is not allowed");
+  if(url.protocol!=="https:"||!ALLOWED_HOSTS.has(url.hostname)||url.port!==""||!!url.username||!!url.password)throw new Error("Source host is not allowed");
 
   const response=await fetch(url.toString(),{
     redirect:"manual",
+    signal:AbortSignal.timeout(15000),
     cache:"no-store",
     headers:{
       "User-Agent":"WETrace/1.0 official-source-preview",
@@ -48,6 +50,7 @@ export async function GET(req:NextRequest){
     }
 
     const body=await upstream.arrayBuffer();
+    if(body.byteLength>10*1024*1024)throw new Error("Image exceeds preview limit");
     return new NextResponse(body,{
       status:200,
       headers:{
