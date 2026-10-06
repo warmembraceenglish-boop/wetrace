@@ -288,6 +288,7 @@ export default function CaseEvidenceCenter({
  }
 
  const media=rows.filter(r=>["image","video","audio"].includes(mediaKind(r)));
+ const scenePhotos=rows.filter(r=>mediaKind(r)==="image"&&/crime scene|scene photo|residence|search site|evidence photo/i.test((r.description||"")+" "+(r.media_caption||""))).length;
  const mediaReady=counts.photos>0&&counts.videos>0;
 
  return <>
@@ -302,6 +303,7 @@ export default function CaseEvidenceCenter({
 
    <section className="panel">
      <div className="panelHead"><div><h2>Case Media Gallery</h2><p>Photos, video and audio stored in the private evidence vault or registered as lawful source references.</p></div></div>
+     {counts.photos>0&&scenePhotos===0&&<div className="formNotice"><strong>No official crime-scene photographs on file yet</strong><p>The current image set contains public portraits/source images, not scene photographs. Do not treat portraits or age-progressed images as crime-scene evidence. Add scene photographs only when an official or otherwise lawful source is obtained and its provenance is recorded.</p></div>}
 
      {media.length?<div className="mediaGallery">{media.map(row=>{
        const kind=mediaKind(row);
