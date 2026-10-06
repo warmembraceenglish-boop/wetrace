@@ -4,6 +4,7 @@ import Link from "next/link";
 import {FormEvent,useEffect,useState} from "react";
 import AppShell from "../components/AppShell";
 import Badge from "../components/Badge";
+import CasePhoto from "../components/CasePhoto";
 import {useWorkspace} from "../lib/useWorkspace";
 
 type MissingRecord={
@@ -279,7 +280,7 @@ export default function MissingPersons(){
            return <Link href={"/missing-persons/"+r.id} className="investigatorCard" key={r.id}>
              <div className="investigatorHero">
                <div className="largeAvatar" style={{overflow:"hidden",padding:0}}>
-                 {photoUrl?<img src={photoUrl} alt={person?.display_name||"Missing person"} style={{width:"100%",height:"100%",objectFit:"cover"}}/>:<span style={{fontSize:11}}>NO PHOTO</span>}
+                 {photoUrl?<CasePhoto src={photoUrl} alt={person?.display_name||"Missing person"} style={{width:"100%",height:"100%",objectFit:"cover"}}/>:<span style={{fontSize:11}}>NO PHOTO</span>}
                </div>
                <div>
                  <h2>{person?.display_name||"Missing person"}</h2>

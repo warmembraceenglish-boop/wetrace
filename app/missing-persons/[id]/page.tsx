@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import CasePhoto from "../../components/CasePhoto";
 import {FormEvent,useEffect,useState} from "react";
 import {useParams} from "next/navigation";
 import AppShell from "../../components/AppShell";
@@ -114,7 +115,7 @@ export default function MissingPersonDetail(){
      <div className="missingDetailGrid">
        <section className="panel">
          <div className="panelHead"><div><h2>Photo gallery</h2><p>Private images tied to evidence records.</p></div></div>
-         {photos.length?<div className="missingGallery">{photos.map((p:any)=><Link href={"/evidence/"+p.evidence_id} className="missingGalleryItem" key={p.id}>{photoUrls[p.id]?<img src={photoUrls[p.id]} alt={p.caption||person?.display_name||"Missing person"}/>:<div className="missingPhotoPlaceholder">Image unavailable</div>}<small>{p.caption||"Case photo"} · Open evidence</small></Link>)}</div>:<div className="emptyState compact"><strong>No photos attached</strong></div>}
+         {photos.length?<div className="missingGallery">{photos.map((p:any)=><Link href={"/evidence/"+p.evidence_id} className="missingGalleryItem" key={p.id}>{photoUrls[p.id]?<CasePhoto src={photoUrls[p.id]} alt={p.caption||person?.display_name||"Missing person"}/>:<div className="missingPhotoPlaceholder">Image unavailable</div>}<small>{p.caption||"Case photo"} · Open evidence</small></Link>)}</div>:<div className="emptyState compact"><strong>No photos attached</strong></div>}
        </section>
 
        <aside className="panel evidenceMeta">
