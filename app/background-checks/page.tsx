@@ -27,7 +27,7 @@ export default function BackgroundChecks(){
      const {data}=await supabase
        .from("cases")
        .select("id,case_number,title,priority,status,jurisdictions,updated_at,case_type")
-       .in("case_type",["Background Investigation","Background Check"])
+       .in("case_type",["Background Investigation","Background Check","Background Check / Investigation"])
        .order("updated_at",{ascending:false});
      setRows(data||[]);
      setLoading(false);
@@ -37,7 +37,7 @@ export default function BackgroundChecks(){
  return <AppShell
    title="Background Checks"
    subtitle="Consent-aware, source-supported background research organized as auditable WETrace cases."
-   actions={<Link href="/cases/new" className="primaryBtn inlineBtn">＋ Start background check</Link>}
+   actions={<Link href="/cases/new?type=Background%20Check" className="primaryBtn inlineBtn">＋ Start background check</Link>}
  >
    <div className="mainGrid">
      <section className="panel casesPanel">
@@ -50,7 +50,7 @@ export default function BackgroundChecks(){
            <div><strong>{r.case_number} · {r.title}</strong><small>{r.jurisdictions?.join(" / ")||"No jurisdiction"} · updated {new Date(r.updated_at).toLocaleString()}</small></div>
            <Badge tone={r.priority==="critical"||r.priority==="high"?"red":r.priority==="medium"?"amber":"blue"}>{r.status}</Badge>
          </Link>)}</div>
-         :!loading&&<div className="emptyState"><strong>No background checks yet</strong><p>Open a new case and choose “Background Investigation” as the case type.</p><Link href="/cases/new" className="primaryBtn inlineBtn">Open first check</Link></div>}
+         :!loading&&<div className="emptyState"><strong>No background checks yet</strong><p>Open a new case and choose “Background Check” as the case type.</p><Link href="/cases/new?type=Background%20Check" className="primaryBtn inlineBtn">Open first check</Link></div>}
      </section>
 
      <section className="panel compliancePanel">
