@@ -11,7 +11,7 @@ const services=[
   "Skip Trace",
   "Insurance Fraud Investigation",
   "Corporate Investigation",
-  "Background Investigation",
+  "Background Check / Investigation",
   "Civil / Litigation Support",
   "Criminal Defense Support",
   "Genealogy / Heir Trace",
