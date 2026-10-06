@@ -1,0 +1,56 @@
+{
+  "name": "wetrace-desktop",
+  "version": "1.0.0",
+  "description": "WETrace secure desktop application",
+  "author": "Oppa Productions",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "build:win": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "^44.5.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.oppaproductions.wetrace",
+    "productName": "WETrace",
+    "asar": true,
+    "compression": "maximum",
+    "directories": {
+      "output": "../dist-desktop"
+    },
+    "files": [
+      "main.cjs",
+      "icon.png",
+      "package.json"
+    ],
+    "win": {
+      "icon": "icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "WETrace-Windows-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "WETrace",
+      "uninstallDisplayName": "WETrace"
+    }
+  }
+}
