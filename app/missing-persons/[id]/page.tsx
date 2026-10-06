@@ -45,13 +45,17 @@ export default function MissingPersonDetail(){
    const urls:Record<string,string>={};
 
    if(eids.length){
-     const {data:e}=await supabase.from("evidence").select("id,storage_path,description").in("id",eids);
+     const {data:e}=await supabase.from("evidence").select("id,storage_path,source_url,description").in("id",eids);
      const evidenceMap=Object.fromEntries((e||[]).map((x:any)=>[x.id,x]));
      for(const row of photoRows){
        const ev=evidenceMap[row.evidence_id];
-       if(!ev?.storage_path)continue;
-       const {data:signed}=await supabase.storage.from("wetrace-evidence").createSignedUrl(ev.storage_path,900);
-       if(signed?.signedUrl)urls[row.id]=signed.signedUrl;
+       if(!ev)continue;
+       if(ev.storage_path){
+         const {data:signed}=await supabase.storage.from("wetrace-evidence").createSignedUrl(ev.storage_path,900);
+         if(signed?.signedUrl)urls[row.id]=signed.signedUrl;
+       }else if(ev.source_url){
+         urls[row.id]=ev.source_url;
+       }
      }
    }
 
@@ -125,7 +129,7 @@ export default function MissingPersonDetail(){
      <section className="panel">
        <div className="panelHead"><div><h2>Case facts</h2><p>Recorded descriptive information. Verify before relying on it.</p></div></div>
        <div className="detailColumns">
-         <div><small>Aliases</small><strong>{person?.aliases?.join(", ")||"—"}</strong></div>
+         <div><small>Date of birth</small><strong>{person?.date_of_birth||"—"}</strong></div><div><small>Aliases</small><strong>{person?.aliases?.join(", ")||"—"}</strong></div>
          <div><small>Nationality</small><strong>{person?.nationality||"—"}</strong></div>
          <div><small>Physical description</small><strong>{record.physical_description||"—"}</strong></div>
          <div><small>Clothing</small><strong>{record.clothing_description||"—"}</strong></div>
