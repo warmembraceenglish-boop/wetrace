@@ -16,6 +16,11 @@ type Evidence={
   sensitivity:string;
   custody_status:string;
   storage_path:string|null;
+  source_url:string|null;
+  source_agency:string|null;
+  source_reference:string|null;
+  original_file_name:string|null;
+  mime_type:string|null;
   sha256:string|null;
   collected_at:string|null;
   created_at:string;
@@ -49,7 +54,7 @@ export default function EvidenceViewer(){
 
      const {data:e,error:eErr}=await supabase
        .from("evidence")
-       .select("id,case_id,evidence_number,evidence_type,description,sensitivity,custody_status,storage_path,sha256,collected_at,created_at")
+       .select("id,case_id,evidence_number,evidence_type,description,sensitivity,custody_status,storage_path,source_url,source_agency,source_reference,original_file_name,mime_type,sha256,collected_at,created_at")
        .eq("id",id)
        .maybeSingle();
 
@@ -69,6 +74,15 @@ export default function EvidenceViewer(){
 
      setCustody((c as Custody[])||[]);
 
+     const detectKind=(name:string)=>{
+       const ext=name.split(".").pop()?.toLowerCase()||"";
+       if(["jpg","jpeg","png","gif","webp"].includes(ext))return "image" as const;
+       if(ext==="pdf")return "pdf" as const;
+       if(["mp4","webm","mov"].includes(ext))return "video" as const;
+       if(["mp3","wav","m4a","ogg"].includes(ext))return "audio" as const;
+       return "other" as const;
+     };
+
      if(e.storage_path){
        const {data:signed,error:sErr}=await supabase.storage
          .from("wetrace-evidence")
@@ -78,13 +92,11 @@ export default function EvidenceViewer(){
          setError(sErr.message);
        }else if(signed?.signedUrl){
          setUrl(signed.signedUrl);
-         const ext=e.storage_path.split(".").pop()?.toLowerCase()||"";
-         if(["jpg","jpeg","png","gif","webp"].includes(ext))setKind("image");
-         else if(ext==="pdf")setKind("pdf");
-         else if(["mp4","webm","mov"].includes(ext))setKind("video");
-         else if(["mp3","wav","m4a","ogg"].includes(ext))setKind("audio");
-         else setKind("other");
+         setKind(detectKind(e.storage_path));
        }
+     }else if(e.source_url){
+       setUrl(e.source_url);
+       setKind(detectKind(e.original_file_name||e.source_url));
      }
 
      setLoading(false);
@@ -127,7 +139,7 @@ export default function EvidenceViewer(){
              <h2>Evidence details</h2>
              <div className="profileDetail"><small>Type</small><strong>{item.evidence_type}</strong></div>
              <div className="profileDetail"><small>Collected</small><strong>{item.collected_at?new Date(item.collected_at).toLocaleString():"—"}</strong></div>
-             <div className="profileDetail"><small>SHA-256</small><strong className="hashText">{item.sha256||"—"}</strong></div>
+             <div className="profileDetail"><small>Source agency</small><strong>{item.source_agency||"—"}</strong></div><div className="profileDetail"><small>Source reference</small><strong>{item.source_reference||"—"}</strong></div><div className="profileDetail"><small>SHA-256</small><strong className="hashText">{item.sha256||"—"}</strong></div>{item.source_url&&<a href={item.source_url} target="_blank" rel="noreferrer" className="secondaryBtn inlineBtn fullBtn">Open official source</a>}
              <div className="profileDetail"><small>Sensitivity</small><strong>{item.sensitivity}</strong></div>
              <Link href={"/cases/"+item.case_id+"?view=evidence"} className="secondaryBtn inlineBtn fullBtn">Return to case</Link>
            </aside>
