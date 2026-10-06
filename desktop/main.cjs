@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, shell, session } = require("electron");
 const path = require("path");
+const fs = require("fs");
 
 const APP_URL = "https://wetrace-oppa.vercel.app";
 let mainWindow;
@@ -21,7 +22,7 @@ function createWindow() {
     minHeight: 700,
     title: "WETrace",
     backgroundColor: "#07131f",
-    icon: path.join(__dirname, "..", "public", "wetrace-icon-512.png"),
+    icon: fs.existsSync(path.join(__dirname, "icon.png")) ? path.join(__dirname, "icon.png") : undefined,
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: false,
