@@ -50,7 +50,7 @@ jobs:
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: WETrace-Desktop-1.0.0-Windows
+          name: WETrace-Desktop-1.0.1-Windows
           path: dist-desktop/*.exe
           if-no-files-found: error
           retention-days: 30
@@ -60,11 +60,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          $tag = "wetrace-desktop-v1.0.0"
+          $tag = "wetrace-desktop-v1.0.1"
           $exe = Get-ChildItem dist-desktop -Filter "*.exe" | Select-Object -First 1
           gh release view $tag --repo "${{ github.repository }}" 2>$null
           if ($LASTEXITCODE -ne 0) {
-            gh release create $tag $exe.FullName --repo "${{ github.repository }}" --target "${{ github.sha }}" --title "WETrace Desktop 1.0.0" --notes "WETrace Desktop for Windows. Install the EXE to launch the live secure WETrace platform from your desktop."
+            gh release create $tag $exe.FullName --repo "${{ github.repository }}" --target "${{ github.sha }}" --title "WETrace Desktop 1.0.1" --notes "WETrace Desktop for Windows. Install the EXE to launch the live secure WETrace platform from your desktop."
           } else {
             gh release upload $tag $exe.FullName --repo "${{ github.repository }}" --clobber
           }
