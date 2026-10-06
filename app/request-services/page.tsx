@@ -6,16 +6,17 @@ import Logo from "../components/Logo";
 import {getSupabaseBrowserClient} from "../lib/supabase";
 
 const services=[
-  "Missing Person",
+  "Initial Consultation — $75 / 45 minutes",
+  "Missing Person Investigation",
   "Skip Trace",
-  "Insurance Fraud",
+  "Insurance Fraud Investigation",
   "Corporate Investigation",
   "Background Investigation",
   "Civil / Litigation Support",
   "Criminal Defense Support",
   "Genealogy / Heir Trace",
   "Forensic / Evidence Review",
-  "Other"
+  "Other / Custom Investigation"
 ];
 
 export default function RequestServices(){
