@@ -1,0 +1,1242 @@
+[
+  {
+    "id": "my-choy-sii-yeong",
+    "full_name": "CHOY SII YEONG",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 16,
+    "sex": "Male",
+    "nationality": null,
+    "date_missing": "2026-08-20",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Spectacles: Yes; Ethnicity: Chinese",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "KPULAI/005823/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/choy-sii-yeong-legacy-49f8fbac5057",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-20",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47880",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms.",
+      "The official source publishes this report number for both Choy Sii Yeong and Avinash A/L Sundhar; retained as published, not independently reconciled."
+    ],
+    "official_alert_reference": "MP-L-E0DE1CBDE676",
+    "physical_description_original": {
+      "Berkaca mata": "Ya",
+      "Etnik": "CINA"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/choy-sii-yeong-legacy-49f8fbac5057",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-avinash-a-l-sundhar",
+    "full_name": "AVINASH A/L SUNDHAR",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 14,
+    "sex": "Male",
+    "nationality": null,
+    "date_missing": "2026-08-20",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Spectacles: No",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "KPULAI/005823/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/avinash-a-l-sundhar-legacy-d538dcb45680",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-20",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47879",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms.",
+      "The official source publishes this report number for both Choy Sii Yeong and Avinash A/L Sundhar; retained as published, not independently reconciled."
+    ],
+    "official_alert_reference": "MP-L-9939CA3C6582",
+    "physical_description_original": {
+      "Berkaca mata": "Tidak"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/avinash-a-l-sundhar-legacy-d538dcb45680",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-raamitha-lucksheekha-a-p-chandra-segaran",
+    "full_name": "RAAMITHA LUCKSHEEKHA A/P CHANDRA SEGARAN",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 14,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-08-20",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Height: 156 cm; Weight: 46 kg; Spectacles: Yes; Hair style: Curly; Hair length: Long; Hair colour: Black; Eye colour: Black; Skin description (source wording): HITAM MANIS; Eyebrows: Moderate; Eye shape: Round; Lips: Thick",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "USJ 8/011238/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/raamitha-lucksheekha-a-p-chandra-segaran-legacy-b6ee62d5f176",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-20",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47878",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-E936CF2F39B8",
+    "physical_description_original": {
+      "Ketinggian": "156 cm",
+      "Berat": "46 kg",
+      "Berkaca mata": "Ya",
+      "Gaya rambut": "RAMBUT KERINTING",
+      "Panjang rambut": "PANJANG",
+      "Warna rambut": "HITAM",
+      "Warna mata": "HITAM",
+      "Warna kulit": "HITAM MANIS",
+      "Kening": "SEDERHANA",
+      "Bentuk mata": "MATA BULAT",
+      "Mulut": "BIBIR MULUT TEBAL"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/raamitha-lucksheekha-a-p-chandra-segaran-legacy-b6ee62d5f176",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-muhammad-muaz-furqan-bin-hashrul",
+    "full_name": "MUHAMMAD MUAZ FURQAN BIN HASHRUL",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 14,
+    "sex": "Male",
+    "nationality": null,
+    "date_missing": "2026-08-18",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Height: 155 cm; Weight: 49 kg; Spectacles: No; Hair style: Black; Hair length: Short; Hair colour: Black; Eye colour: Black; Skin description (source wording): KUNING LANGSAT; Eye shape: Small; Nose (source wording): HIDUNG KEMAK/MANGGA; Lips: Thin; Build: Slim and tall; Ethnicity: Malay",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "INANAM/006097/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/muhammad-muaz-furqan-bin-hashrul-legacy-ce0ff4efcdf6",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-18",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47828",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-4FC117ED826E",
+    "physical_description_original": {
+      "Ketinggian": "155 cm",
+      "Berat": "49 kg",
+      "Berkaca mata": "Tidak",
+      "Gaya rambut": "RAMBUT HITAM",
+      "Panjang rambut": "PENDEK",
+      "Warna rambut": "HITAM",
+      "Warna mata": "HITAM",
+      "Warna kulit": "KUNING LANGSAT",
+      "Bentuk mata": "MATA KECIL",
+      "Hidung": "HIDUNG KEMAK/MANGGA",
+      "Mulut": "BIBIR MULUT NIPIS",
+      "Bentuk badan": "KURUS TINGGI",
+      "Etnik": "MELAYU"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/muhammad-muaz-furqan-bin-hashrul-legacy-ce0ff4efcdf6",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-nor-dini-binti-mohamad-faizal",
+    "full_name": "NOR DINI BINTI MOHAMAD FAIZAL",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 16,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-08-18",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Height: 161 cm; Weight: 45 kg; Spectacles: No; Ethnicity: Malay",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "JELUTONG/005451/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/nor-dini-binti-mohamad-faizal-legacy-3656d2c80f58",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-18",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47827",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-6A1888CD6C9B",
+    "physical_description_original": {
+      "Ketinggian": "161 cm",
+      "Berat": "45 kg",
+      "Berkaca mata": "Tidak",
+      "Etnik": "MELAYU"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/nor-dini-binti-mohamad-faizal-legacy-3656d2c80f58",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-nur-najiha-najwa-binti-mohammed-yusof",
+    "full_name": "NUR NAJIHA NAJWA BINTI MOHAMMED YUSOF",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 17,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-08-17",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Height: 150 cm; Weight: 60 kg; Spectacles: No; Hair style: Black; Hair length: Shoulder length; Hair colour: Black; Eye colour: Black; Eye shape: Round; Teeth: Overlapping teeth; Ethnicity: Malay",
+    "clothing": null,
+    "identifying_marks": "Overlapping teeth (official wording: GIGI BERTINDEH).",
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "WANGSA MAJU/009316/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/nur-najiha-najwa-binti-mohammed-yusof-legacy-3384b9afd385",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-17",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47831",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-FC4E2374263F",
+    "physical_description_original": {
+      "Ketinggian": "150 cm",
+      "Berat": "60 kg",
+      "Berkaca mata": "Tidak",
+      "Gaya rambut": "RAMBUT HITAM",
+      "Panjang rambut": "PARAS BAHU",
+      "Warna rambut": "HITAM",
+      "Warna mata": "HITAM",
+      "Bentuk mata": "MATA BULAT",
+      "Gigi": "GIGI BERTINDEH",
+      "Etnik": "MELAYU"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/nur-najiha-najwa-binti-mohammed-yusof-legacy-3384b9afd385",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-nur-qaidah-ziabul-haque",
+    "full_name": "NUR QAIDAH ZIABUL HAQUE",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 17,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-08-17",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Spectacles: Yes; Ethnicity: Other",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "GOMBAK/008610/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/nur-qaidah-ziabul-haque-legacy-29d3a7d6dd00",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-17",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47830",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-E8E9CC6A14E7",
+    "physical_description_original": {
+      "Berkaca mata": "Ya",
+      "Etnik": "LAIN LAIN BANGSA"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/nur-qaidah-ziabul-haque-legacy-29d3a7d6dd00",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-nur-adryana-elyssa-binti-gusti-isa",
+    "full_name": "NUR ADRYANA ELYSSA BINTI GUSTI ISA",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 16,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-08-17",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Height: 157 cm; Weight: 52 kg; Spectacles: Yes; Hair style: Brown; Hair length: Shoulder length; Ethnicity: Malay",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "GOMBAK/008561/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/nur-adryana-elyssa-binti-gusti-isa-legacy-a21c9a9e3744",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-17",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47825",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-BE892DD4658F",
+    "physical_description_original": {
+      "Ketinggian": "157 cm",
+      "Berat": "52 kg",
+      "Berkaca mata": "Ya",
+      "Gaya rambut": "RAMBUT PERANG",
+      "Panjang rambut": "PARAS BAHU",
+      "Etnik": "MELAYU"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/nur-adryana-elyssa-binti-gusti-isa-legacy-a21c9a9e3744",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-muhamad-fithry-bin-mohd-amin",
+    "full_name": "MUHAMAD FITHRY BIN MOHD AMIN",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 15,
+    "sex": "Male",
+    "nationality": null,
+    "date_missing": "2026-08-16",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Spectacles: No; Ethnicity: Malay",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "PENJOM/000346/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/muhamad-fithry-bin-mohd-amin-legacy-a69b9004f00f",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-16",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47829",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-0AEBF195FD6C",
+    "physical_description_original": {
+      "Berkaca mata": "Tidak",
+      "Etnik": "MELAYU"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/muhamad-fithry-bin-mohd-amin-legacy-a69b9004f00f",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-sonali-brynda-malawan",
+    "full_name": "SONALI BRYNDA MALAWAN",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 16,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-08-16",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Height: 150 cm; Spectacles: No; Ethnicity: Malay",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "JALAN CAMPBELL/010159/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/sonali-brynda-malawan-legacy-6a88ed0d65ff",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-16",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47824",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-EFD3613829E9",
+    "physical_description_original": {
+      "Ketinggian": "150 cm",
+      "Berkaca mata": "Tidak",
+      "Etnik": "MELAYU"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/sonali-brynda-malawan-legacy-6a88ed0d65ff",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-muhammad-affandi-sufi-zulhilmi-bin-abdullah",
+    "full_name": "MUHAMMAD AFFANDI SUFI ZULHILMI BIN ABDULLAH",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 16,
+    "sex": "Male",
+    "nationality": null,
+    "date_missing": "2026-08-16",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Spectacles: No; Ethnicity: Malay",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "SG NIBONG/005009/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/muhammad-affandi-sufi-zulhilmi-bin-abdullah-legacy-3bc9644d06f4",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-16",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47819",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-93FF86F45406",
+    "physical_description_original": {
+      "Berkaca mata": "Tidak",
+      "Etnik": "MELAYU"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/muhammad-affandi-sufi-zulhilmi-bin-abdullah-legacy-3bc9644d06f4",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "my-pazus-puspa-sari-binti-abdullah",
+    "full_name": "PAZUS PUSPA SARI BINTI ABDULLAH",
+    "country": "Malaysia",
+    "country_code": "MY",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 15,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-08-14",
+    "date_reported": null,
+    "last_seen_location": null,
+    "physical_description": "Spectacles: No; Ethnicity: Malay",
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Royal Malaysia Police (PDRM), NUR Alert",
+    "case_report_number": "RAHANG/003431/26",
+    "official_source_url": "https://rmp2u.rmp.gov.my/nur-alert/pazus-puspa-sari-binti-abdullah-legacy-b03569e15210",
+    "status": "missing",
+    "status_basis": "Official NUR Alert page displays Aktif (active), checked 2026-10-07. No direct police confirmation.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-08-14",
+        "event": "Last seen, according to the official NUR Alert."
+      },
+      {
+        "date": "2026-08-22",
+        "event": "Official alert last updated."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/foto/47810",
+        "original_filename": null,
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://rmp2u.rmp.gov.my/content/hak-cipta"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": null,
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Last-seen location is not disclosed on the public notice.",
+      "Published age retained as reported; DOB and age at disappearance were not inferred.",
+      "Photo copying requires permission under the published RMP2U terms."
+    ],
+    "official_alert_reference": "MP-L-73E829026DA0",
+    "physical_description_original": {
+      "Berkaca mata": "Tidak",
+      "Etnik": "MELAYU"
+    },
+    "source_updated_on": "2026-08-22",
+    "bulletins": [
+      {
+        "url": "https://rmp2u.rmp.gov.my/nur-alert/pazus-puspa-sari-binti-abdullah-legacy-b03569e15210",
+        "kind": "official_printable_html_bulletin",
+        "download_status": "permission_required"
+      }
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "last_seen_location",
+      "clothing",
+      "identifying_marks",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "sg-j-mies-oh-hui-min",
+    "full_name": "J’mies Oh Hui Min",
+    "country": "Singapore",
+    "country_code": "SG",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 15,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-09-24",
+    "date_reported": null,
+    "last_seen_location": "3 Pasir Ris Rise, Singapore",
+    "physical_description": null,
+    "clothing": "Light blue polo T-shirt with dark short sleeves; dark blue skirt.",
+    "identifying_marks": null,
+    "police_agency": "Singapore Police Force, Public Affairs Department",
+    "case_report_number": null,
+    "official_source_url": "https://www.police.gov.sg/Media-Hub/News/2026/10/20261001_appeal_for_information_ms_j_mies_oh_hui_min",
+    "status": "missing",
+    "status_basis": "Official police missing-person appeal published 2026-10-01 remains available on review 2026-10-07. No located update found; not directly confirmed with police.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-09-24",
+        "event": "Last seen at approximately 06:30 Singapore time near 3 Pasir Ris Rise, Singapore."
+      },
+      {
+        "date": "2026-10-01",
+        "event": "Singapore Police Force published an appeal for information."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://www.police.gov.sg/-/media/SPF/PNR/2026/October/20261001_appeal_for_information_ms_j_mies_oh_hui_min_1.jpg",
+        "original_filename": "20261001_appeal_for_information_ms_j_mies_oh_hui_min_1.jpg",
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://www.police.gov.sg/Terms-of-Use"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": "2026-10-01",
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Photo reproduction requires written permission under the Singapore Police Force terms."
+    ],
+    "last_seen_time_local": "06:30",
+    "last_seen_timezone": "Asia/Singapore",
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "physical_description",
+      "identifying_marks",
+      "case_report_number",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "sg-arianna-qaireen",
+    "full_name": "Arianna Qaireen",
+    "country": "Singapore",
+    "country_code": "SG",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 12,
+    "sex": "Female",
+    "nationality": null,
+    "date_missing": "2026-09-29",
+    "date_reported": null,
+    "last_seen_location": "Block 997C Buangkok Crescent, Singapore",
+    "physical_description": null,
+    "clothing": "Black shirt; black long pants.",
+    "identifying_marks": null,
+    "police_agency": "Singapore Police Force, Public Affairs Department",
+    "case_report_number": null,
+    "official_source_url": "https://www.police.gov.sg/Media-Hub/News/2026/10/20261001_appeal_for_information_ms_arianna_qaireen",
+    "status": "missing",
+    "status_basis": "Official police missing-person appeal published 2026-10-01 remains available on review 2026-10-07. No located update found; not directly confirmed with police.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-09-29",
+        "event": "Last seen at approximately 17:30 Singapore time near Block 997C Buangkok Crescent, Singapore."
+      },
+      {
+        "date": "2026-10-01",
+        "event": "Singapore Police Force published an appeal for information."
+      }
+    ],
+    "photos": [
+      {
+        "url": "https://www.police.gov.sg/-/media/SPF/PNR/2026/October/20261001_appeal_for_information_ms_arianna_qaireen_1.jpg",
+        "original_filename": "20261001_appeal_for_information_ms_arianna_qaireen_1.jpg",
+        "download_status": "permission_required",
+        "kind": "official_photo",
+        "rights_source_url": "https://www.police.gov.sg/Terms-of-Use"
+      }
+    ],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": "2026-10-01",
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Photo reproduction requires written permission under the Singapore Police Force terms."
+    ],
+    "last_seen_time_local": "17:30",
+    "last_seen_timezone": "Asia/Singapore",
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "nationality",
+      "date_reported",
+      "physical_description",
+      "identifying_marks",
+      "case_report_number",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "vn-b-n-v-n-l-m",
+    "full_name": "Bàn Văn Lâm",
+    "country": "Vietnam",
+    "country_code": "VN",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": null,
+    "sex": "Male",
+    "nationality": null,
+    "date_missing": "2026-09-20",
+    "date_reported": "2026-09-22",
+    "last_seen_location": "Bản Đôn village, Phong Quang commune, Thái Nguyên province, Vietnam",
+    "physical_description": null,
+    "clothing": null,
+    "identifying_marks": null,
+    "police_agency": "Công an xã Phong Quang; Công an tỉnh Thái Nguyên",
+    "case_report_number": null,
+    "official_source_url": "https://congan.thainguyen.gov.vn/index.php/tin-tuc/guong-nguoi-tot-viec-tot/cong-an-xa-phong-quang-kip-thoi-tim-kiem-nguoi-mat-tich-6343.html",
+    "status": "located",
+    "status_basis": "Official provincial police report confirms found alive on 2026-09-22 at approximately 09:50. Not an active missing-person search.",
+    "category": "Located",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-09-20",
+        "event": "Went missing, according to the police report."
+      },
+      {
+        "date": "2026-09-22",
+        "event": "Missing-person report received; found alive at approximately 09:50."
+      },
+      {
+        "date": "2026-09-24",
+        "event": "Police published the successful search update."
+      }
+    ],
+    "photos": [],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": "2026-09-24",
+    "verification": "official_source_reviewed",
+    "notes": [
+      "Only birth year 1982 is published; no complete DOB or age inferred.",
+      "Located record: excluded from open-search categories. No rescue-scene image copied."
+    ],
+    "birth_year": 1982,
+    "additional_sources": [
+      "https://mps.gov.vn/bai-viet/cong-an-xa-phong-quang-kip-thoi-tim-kiem-nguoi-mat-tich-1790239130"
+    ],
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "age_as_reported",
+      "nationality",
+      "physical_description",
+      "clothing",
+      "identifying_marks",
+      "case_report_number",
+      "reward_information"
+    ]
+  },
+  {
+    "id": "id-fajar-dimas-akbar-anickty",
+    "full_name": "Fajar Dimas Akbar Anickty",
+    "country": "Indonesia",
+    "country_code": "ID",
+    "region": "Southeast Asia",
+    "dob": null,
+    "age_at_disappearance": null,
+    "age_as_reported": 16,
+    "sex": null,
+    "nationality": null,
+    "date_missing": "2026-04-04",
+    "date_reported": null,
+    "last_seen_location": "Roadside heading toward Payakumbuh, West Sumatra, Indonesia",
+    "physical_description": "Approximately 160 cm tall and 50 kg; acne on face.",
+    "clothing": "Black T-shirt; blue jeans; orange backpack.",
+    "identifying_marks": "Acne on face.",
+    "police_agency": "Kepolisian Resor Lima Puluh Kota (Polres 50 Kota)",
+    "case_report_number": null,
+    "official_source_url": "https://res50kota.sumbar.polri.go.id/2026/04/06/polres-50-kota-terima-laporan-orang-hilang-personel-segera-lakukan-pencarian",
+    "status": "missing",
+    "status_basis": "UNVERIFIED CURRENT STATUS: official police release reported missing on 2026-04-06. Reviewed via search-index copy on 2026-10-07; live page unavailable and no subsequent outcome confirmed.",
+    "category": "Recent",
+    "official_cold_case_designation": null,
+    "reward_amount": null,
+    "reward_currency": null,
+    "reward_information": null,
+    "timeline": [
+      {
+        "date": "2026-04-04",
+        "event": "Left home on foot; last seen around 00:22 WIB beside the road toward Payakumbuh."
+      },
+      {
+        "date": "2026-04-06",
+        "event": "Polres 50 Kota published a missing-person search appeal."
+      }
+    ],
+    "photos": [],
+    "posters": [],
+    "source_checked_on": "2026-10-07",
+    "source_published_on": "2026-04-06",
+    "verification": "official_source_index_reviewed_current_status_unverified",
+    "notes": [
+      "Current missing/located status has not been re-confirmed.",
+      "Skin-colour field contains apparent template text in the source and was excluded.",
+      "Private family phone number and precise residential address were not imported."
+    ],
+    "last_seen_time_local": "00:22",
+    "last_seen_timezone": "Asia/Jakarta",
+    "missing_fields": [
+      "dob",
+      "age_at_disappearance",
+      "sex",
+      "nationality",
+      "date_reported",
+      "case_report_number",
+      "reward_information"
+    ]
+  }
+]

@@ -38,6 +38,7 @@ export default function MissingPersons(){
  const [sourceData,setSourceData]=useState<Record<string,any>>({});
  const [category,setCategory]=useState("All");
  const [country,setCountry]=useState("All");
+ const [region,setRegion]=useState("All");
  const [ageGroup,setAgeGroup]=useState("All");
  const [search,setSearch]=useState("");
  const [records,setRecords]=useState<MissingRecord[]>([]);
@@ -239,11 +240,12 @@ export default function MissingPersons(){
  };
  const age=(r:MissingRecord)=>{
    const s=sourceData[r.case_id]; if(s?.age_at_disappearance!=null)return s.age_at_disappearance;
+   if(s?.age_as_reported!=null)return s.age_as_reported;
    const dob=people[r.person_id]?.date_of_birth,d=recordDate(r);
    if(!dob||!d)return null;
    return Number(d.slice(0,4))-Number(dob.slice(0,4))-(d.slice(5)<dob.slice(5)?1:0);
  };
- const visible=records.filter(r=>(category==="All"||group(r)===category)&&(country==="All"||recordCountry(r)===country)&&(ageGroup==="All"||(ageGroup==="Unknown"?age(r)==null:age(r)!=null&&(ageGroup==="Child"?age(r)<18:age(r)>=18)))&&((people[r.person_id]?.display_name||"")+" "+(r.last_seen_location||"")).toLowerCase().includes(search.toLowerCase())).sort((a,b)=>(recordCountry(a)==="United States"?0:1)-(recordCountry(b)==="United States"?0:1)||recordCountry(a).localeCompare(recordCountry(b))||recordDate(b).localeCompare(recordDate(a)));
+ const visible=records.filter(r=>(category==="All"||group(r)===category)&&(country==="All"||recordCountry(r)===country)&&(region==="All"||sourceData[r.case_id]?.region===region)&&(ageGroup==="All"||(ageGroup==="Unknown"?age(r)==null:age(r)!=null&&(ageGroup==="Child"?age(r)<18:age(r)>=18)))&&((people[r.person_id]?.display_name||"")+" "+(r.last_seen_location||"")).toLowerCase().includes(search.toLowerCase())).sort((a,b)=>(recordCountry(a)==="United States"?0:1)-(recordCountry(b)==="United States"?0:1)||recordCountry(a).localeCompare(recordCountry(b))||recordDate(b).localeCompare(recordDate(a)));
  const exportRecords=()=>{
    const data=visible.map(r=>sourceData[r.case_id]||{...r,person:people[r.person_id],case:caseMap[r.case_id],verification:"legacy_record_not_reverified_in_this_batch"});
    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));
@@ -261,9 +263,10 @@ export default function MissingPersons(){
    <section className="panel">
      <div className="formGrid">
        <label>Search name or location<input value={search} onChange={e=>setSearch(e.target.value)}/></label>
+       <label>Region<select value={region} onChange={e=>{setRegion(e.target.value);setCountry("All");}}><option>All</option><option>Southeast Asia</option></select></label>
        <label>Country<select value={country} onChange={e=>setCountry(e.target.value)}><option>All</option>{[...new Set(records.map(recordCountry))].sort().map(x=><option key={x}>{x}</option>)}</select></label>
        <label>Directory section<select value={category} onChange={e=>setCategory(e.target.value)}>{["All","Recent","Active/Open","Cold Case","Located","Closed"].map(x=><option key={x}>{x}</option>)}</select></label>
-       <label>Age at disappearance<select value={ageGroup} onChange={e=>setAgeGroup(e.target.value)}>{["All","Child","Adult","Unknown"].map(x=><option key={x}>{x}</option>)}</select></label>
+       <label>Published age group<select value={ageGroup} onChange={e=>setAgeGroup(e.target.value)}>{["All","Child","Adult","Unknown"].map(x=><option key={x}>{x}</option>)}</select></label>
      </div>
      <p>Recent: missing within the last 12 months. Older active cases are not automatically classified as cold. Located people are excluded from open sections. Coverage is partial; check each record's source date.</p>
      <button className="secondaryBtn inlineBtn" onClick={exportRecords}>Export displayed records (JSON)</button>
@@ -280,7 +283,7 @@ export default function MissingPersons(){
            return <Link href={"/missing-persons/"+r.id} className="investigatorCard" key={r.id}>
              <div className="investigatorHero">
                <div className="largeAvatar" style={{overflow:"hidden",padding:0}}>
-                 {photoUrl?<CasePhoto src={photoUrl} alt={person?.display_name||"Missing person"} style={{width:"100%",height:"100%",objectFit:"cover"}}/>:<span style={{fontSize:11}}>NO PHOTO</span>}
+                 {photoUrl?<CasePhoto src={photoUrl} alt={person?.display_name||"Missing person"} style={{width:"100%",height:"100%",objectFit:"cover"}}/>:<span style={{fontSize:11}}>{sourceData[r.case_id]?.photos?.length?"OFFICIAL PHOTO LINK":"NO PHOTO"}</span>}
                </div>
                <div>
                  <h2>{person?.display_name||"Missing person"}</h2>
@@ -302,6 +305,7 @@ export default function MissingPersons(){
                <div><small>Police ref</small><strong>{r.police_report_reference||"—"}</strong></div>
              </div>
 
+             {sourceData[r.case_id]?.verification?.includes("current_status_unverified")&&<p className="inlineAlert">Current status unverified — see the dated official notice.</p>}
              <div className="credentialPreview"><span>⌖</span>{r.physical_description||r.last_seen_details||"Open the record for full details, images, sightings and sources."}</div>
            </Link>;
          })}

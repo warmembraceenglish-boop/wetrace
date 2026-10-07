@@ -115,7 +115,7 @@ export default function MissingPersonDetail(){
      <div className="missingDetailGrid">
        <section className="panel">
          <div className="panelHead"><div><h2>Photo gallery</h2><p>Private images tied to evidence records.</p></div></div>
-         {photos.length?<div className="missingGallery">{photos.map((p:any)=><Link href={"/evidence/"+p.evidence_id} className="missingGalleryItem" key={p.id}>{photoUrls[p.id]?<CasePhoto src={photoUrls[p.id]} alt={p.caption||person?.display_name||"Missing person"}/>:<div className="missingPhotoPlaceholder">Image unavailable</div>}<small>{p.caption||"Case photo"} · Open evidence</small></Link>)}</div>:<div className="emptyState compact"><strong>No photos attached</strong></div>}
+         {photos.length?<div className="missingGallery">{photos.map((p:any)=><Link href={"/evidence/"+p.evidence_id} className="missingGalleryItem" key={p.id}>{photoUrls[p.id]?<CasePhoto src={photoUrls[p.id]} alt={p.caption||person?.display_name||"Missing person"}/>:<div className="missingPhotoPlaceholder">Image unavailable</div>}<small>{p.caption||"Case photo"} · Open evidence</small></Link>)}</div>:<div className="emptyState compact"><strong>{sourceData?.photos?.length?"Photos available from the official source":"No photos attached"}</strong>{sourceData?.photos?.length>0&&<><p>These photos have not been copied into WETrace because reproduction permission is required.</p><a href={sourceData.official_source_url} target="_blank" rel="noopener noreferrer" className="secondaryBtn inlineBtn">View photos on the official police website</a></>}</div>}
        </section>
 
        <aside className="panel evidenceMeta">
@@ -149,7 +149,7 @@ export default function MissingPersonDetail(){
        <h2>Official source dossier</h2>
        <p>Source reviewed {sourceData.source_checked_on}. {sourceData.status_basis}</p>
        <div className="detailColumns">
-         {[["Country",sourceData.country],["Sex",sourceData.sex],["Age at disappearance",sourceData.age_at_disappearance],["Age as reported",sourceData.age_as_reported],["Identifying marks",sourceData.identifying_marks],["Reward",sourceData.reward_information],["Agency",sourceData.police_agency],["Police reference",sourceData.case_report_number]].map(([label,value])=><div key={label}><small>{label}</small><strong>{value??"Not published in reviewed source"}</strong></div>)}
+         {[["Country",sourceData.country],["Region",sourceData.region],["Birth year",sourceData.birth_year],["Sex",sourceData.sex],["Age at disappearance",sourceData.age_at_disappearance],["Age as reported",sourceData.age_as_reported],["Identifying marks",sourceData.identifying_marks],["Reward",sourceData.reward_information],["Agency",sourceData.police_agency],["Police reference",sourceData.case_report_number]].map(([label,value])=><div key={label}><small>{label}</small><strong>{value??"Not published in reviewed source"}</strong></div>)}
        </div>
        <h3>Timeline</h3>
        <ul>{sourceData.timeline?.map((t:any,i:number)=><li key={i}><strong>{t.date||"Date not published"}</strong> — {t.event}</li>)}</ul>
@@ -158,6 +158,7 @@ export default function MissingPersonDetail(){
        <p><a href={sourceData.official_source_url} rel="noreferrer">Official source</a></p>
        {sourceData.additional_sources?.map((url:string)=><p key={url}><a href={url} rel="noreferrer">Additional official update</a></p>)}
        <h3>Official posters and bulletins</h3>
+       {sourceData.bulletins?.map((a:{url:string})=><p key={a.url}><a href={a.url} target="_blank" rel="noopener noreferrer">Open official printable bulletin</a></p>)}
        <p>Remote links only. Originals have not been downloaded or preserved in WETrace storage.</p>
        {sourceData.posters?.length?sourceData.posters.map((a:any,i:number)=><button key={a.url} className="secondaryBtn inlineBtn" onClick={()=>setPoster(a.url)}>View official poster {i+1}</button>):<p>No separate poster verified; see the official appeal.</p>}
        {poster&&<div><button className="textBtn" onClick={()=>setPoster(null)}>Close poster</button><iframe title="Official missing-person poster" src={"/api/source-file?url="+encodeURIComponent(poster)} style={{width:"100%",height:700,border:0}}/></div>}
