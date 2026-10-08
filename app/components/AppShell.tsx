@@ -7,7 +7,7 @@ import Logo from "./Logo";
 import {useWorkspace} from "../lib/useWorkspace";
 
 const nav=[
-["Dashboard","/","⌂"],["Cases","/cases","▣"],["Live Cases","/live-cases","◉"],["Cold Case Files","/cold-cases","❄"],["People","/people","◎"],["Evidence","/evidence","◇"],["Intelligence","/intelligence","⌘"],
+["Dashboard","/","⌂"],["Cases","/cases","▣"],["Live Cases","/live-cases","◉"],["Cold Case Files","/cold-cases","❄"],["Most Wanted","/most-wanted","⚠"],["People","/people","◎"],["Evidence","/evidence","◇"],["Intelligence","/intelligence","⌘"],
 ["Missing Persons","/missing-persons","⌖"],["Facial Comparison","/facial-comparison","◈"],["Skip Trace","/skip-trace","↯"],["Background Checks","/background-checks","✓"],["Records Search","/records","⌕"],["Forensics","/forensics","◫"],
 ["Genealogy","/genealogy","⌁"],["Investigators","/investigators","♟"],["Reports","/reports","▤"],["Billing","/billing","◉"],["Administration","/admin","⚙"]
 ];
