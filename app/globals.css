@@ -93,3 +93,14 @@ table{width:100%;border-collapse:collapse;min-width:760px}th{text-align:left;fon
 .salesFooter{max-width:1440px;margin:0 auto;padding:28px;display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center;border-top:1px solid rgba(166,203,227,.1)}.salesFooter>p{color:#607d91;font-size:8px;line-height:1.6;text-align:center;margin:0}.salesFooter>div:last-child{display:flex;gap:16px}.salesFooter a{color:#7898ac;text-decoration:none;font-size:8px}
 @media(max-width:980px){.salesNav nav{display:none}.salesNavCta{margin-left:auto}.salesHero{grid-template-columns:1fr;gap:35px;padding-top:64px}.salesHeroPanel{max-width:600px}.salesIntro{grid-template-columns:1fr;gap:16px}.salesServiceGrid{grid-template-columns:1fr}.salesSteps{grid-template-columns:1fr 1fr}.salesSafety{grid-template-columns:1fr}.salesFooter{grid-template-columns:1fr;text-align:center}.salesFooter .salesBrand,.salesFooter>div:last-child{justify-content:center}}
 @media(max-width:640px){.salesNav{padding:0 16px;height:68px}.salesNavCta{padding:9px 11px;font-size:8px}.salesBrand strong{font-size:18px}.salesBrandMark{width:37px;height:37px}.salesHero{padding:52px 16px 55px}.salesHero h1{font-size:45px}.salesHeroLead{font-size:12px}.salesHeroActions>*{width:100%}.salesTrustRow{display:grid;gap:8px}.salesHeroPanel{padding:23px}.salesSection{padding:55px 16px 23px}.salesServiceGrid{padding:0 16px 65px}.salesServiceCard{grid-template-columns:38px 1fr;padding:18px}.salesCardNumber{width:34px;height:34px}.salesServiceCard h3{grid-column:2}.salesServiceCard>p,.salesPricing,.salesServiceCard>a{grid-column:1/3}.salesPricing{display:grid;grid-template-columns:1fr 1fr}.salesPricing>div{min-width:0}.salesConsultSection{margin:0 16px 65px;padding:28px 20px}.salesConsultOptions{grid-template-columns:1fr}.salesProcess{padding:0 16px 65px}.salesSteps{grid-template-columns:1fr}.salesSafety{margin:0 16px 65px;padding:27px 22px;gap:20px}.salesCta{margin:0 16px 45px;padding:30px 22px;display:block}.salesCta .salesPrimary{width:100%;margin-top:22px}.salesFooter{padding:24px 16px}}
+
+.wantedGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.wantedCard{overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025)}
+.wantedCard img,.wantedPhoto{width:100%;height:230px;object-fit:cover;background:#0b2238}
+.wantedPhoto{display:grid;place-items:center;font-size:54px;font-weight:800;color:#38bdf8}
+.wantedBody{padding:14px}
+.wantedBody h3{margin:7px 0 9px}
+.wantedBody p{font-size:13px;line-height:1.5;color:#b6c7d8}
+.wantedMeta{display:flex;justify-content:space-between;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#7dd3fc}
+@media(max-width:1050px){.wantedGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.wantedGrid{grid-template-columns:1fr}}
